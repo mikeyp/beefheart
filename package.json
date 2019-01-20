@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Mike Prasuhn <mike@mikeyp.net>",
   "dependencies": {
+    "foundation-sites": "^6.5.1",
     "gatsby": "^2.0.53",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-manifest": "^2.0.9",
