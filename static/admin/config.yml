@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: shomeya/cleverdev
+  base_url: https://ges7shklsl.execute-api.us-east-1.amazonaws.com
+  branch: master
+  auth_endpoint: /prod/auth
+publish_mode: editorial_workflow
+media_folder: "static/uploads"
+public_folder: "/uploads"
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "src/pages"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
