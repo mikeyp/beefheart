@@ -1,8 +1,9 @@
 ---
 title: On Writing
-author: mdp
+path: /blog/on-writing
 date: 2013-01-29
-alias: index.php/2013/01/on-writing/
+redirects:
+  - index.php/2013/01/on-writing/
 published: true
 background_image: typewriter-cropped.jpg
 ---

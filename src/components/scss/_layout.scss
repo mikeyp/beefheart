@@ -2,16 +2,10 @@
 
 @import '~foundation-sites/scss/foundation';
 
-@include foundation-xy-grid-classes(
-  /* options
-  $base-grid: true,
-  $margin-grid: true,
-  $padding-grid: true,
-  $block-grid: true,
-  $collapse: true,
-  $offset: true,
-  $vertical-grid: true,
-  $frame-grid: true
-  */
-);
+@include foundation-xy-grid-classes();
+@include foundation-flex-classes;
 
+
+.page-container {
+  min-height: 100vh;
+}

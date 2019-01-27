@@ -1,0 +1,28 @@
+
+.header {
+  background-color: #333332;
+}
+
+.header__site-name {
+  font-family: 'raleway-bold', Arial, Helvetica, sans-serif;
+
+
+  @include breakpoint(small) {
+    font-size: 1.0rem;
+    margin: .2rem 0;
+  }
+
+  @include breakpoint(medium) {
+    font-size: 1.75rem;
+    line-height: 1;
+    margin: .5rem 0;
+  }
+}
+
+.header__link {
+  color: white;
+}
+
+.header__link:hover {
+  color: darken(white, 10%);
+}

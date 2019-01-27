@@ -1,7 +1,7 @@
 ---
 title: On Motivations
 subtitle:
-author: mdp
+path: /blog/on-motivations
 date: 2015-07-30
 published: false
 

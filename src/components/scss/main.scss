@@ -1,5 +1,15 @@
 
 
+// Import utils
+@import '~foundation-sites/scss/vendor/normalize';
+@import '~foundation-sites/scss/util/util';
+@import '~foundation-sites/scss/global';
+
+// Import settings
+@import 'settings.scss';
 
 @import 'layout.scss';
 @import 'typography.scss';
+
+// Import section specific css
+@import 'header.scss';

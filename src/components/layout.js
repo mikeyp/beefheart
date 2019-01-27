@@ -28,11 +28,17 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div className='grid-container'>
-          <div className='grid-x'>
-            <div className='cell'>
+        <div className='container'>
+          <div className='grid-y  page-container'>
+            <div className='cell shrink'>
+              <Header siteTitle={data.site.siteMetadata.title} />
+            </div>
+            <div className='cell auto'>
               {children}
+            </div>
+
+            <div className='cell shrink'>
+              <div className='footer'></div>
             </div>
           </div>
         </div>

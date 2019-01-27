@@ -1,9 +1,8 @@
 ---
 title: Turning your hobby into a career
-author: mdp
+path: /blog/turning-your-hobby-into-your-career
 date: 2015-07-30
 published: false
-
 ---
 
 <blockquote class="twitter-tweet"><p>I somehow feel much more excited about having repaired the bathroom sink drain successfully than having rolled out 5 new features this week.</p>&mdash; Thomas Fuchs (@thomasfuchs) <a href="https://twitter.com/thomasfuchs/status/296767168878620673">January 30, 2013</a></blockquote>

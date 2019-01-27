@@ -1,5 +1,27 @@
 
+@import '~foundation-sites/scss/vendor/normalize';
+@import '~foundation-sites/scss/global';
+@import '~foundation-sites/scss/typography/typography';
+
 
 // Global styles
 @include foundation-global-styles;
 @include foundation-typography;
+
+@font-face {
+  font-family: 'raleway-extra-bold';
+  src: url(./fonts/Raleway-ExtraBold.woff) format('woff'),
+       url(./fonts/Raleway-ExtraBold.ttf)  format('truetype');
+}
+
+@font-face {
+  font-family: 'raleway-bold';
+  src: url(./fonts/Raleway-Bold.woff) format('woff'),
+       url(./fonts/Raleway-Bold.ttf)  format('truetype');
+}
+
+@font-face {
+  font-family: 'raleway-medium';
+  src: url(./fonts/Raleway-Medium.woff) format('woff'),
+       url(./fonts/Raleway-Medium.ttf)  format('truetype');
+}
