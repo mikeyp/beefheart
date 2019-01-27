@@ -1,11 +1,11 @@
 ---
+published: true
 title: On Writing
 path: /blog/on-writing
-date: 2013-01-29
+date: 2013-01-29T00:00:00.000Z
 redirects:
   - index.php/2013/01/on-writing/
-published: true
-background_image: typewriter-cropped.jpg
+  - on-writing/
 ---
 
 <blockquote><p>If I’d had more time, I’d have written a shorter post.</p></blockquote>
