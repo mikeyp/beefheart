@@ -2,8 +2,8 @@
 title: New blog, old archive
 path: /blog/new-blog-old-archive
 date: 2013-01-05
-redirects:
-  - index.php/2013/01/new-blog-old-archive/
+redirect_from:
+  - /index.php/2013/01/new-blog-old-archive/
 published: true
 ---
 

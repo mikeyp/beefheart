@@ -10,7 +10,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   var query = `{
     blogs: allMarkdownRemark(
@@ -22,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             frontmatter {
               path
+              redirect_from
             }
           }
         }
@@ -35,53 +36,52 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             frontmatter {
               path
+              redirect_from
             }
           }
         }
       }
     }
-    `;
+  `;
 
-    // if (process.env.NODE_ENV === 'production') {
-    //   var query = `{
-    //     blogs: allMarkdownRemark(
-    //       filter: {
-    //         fileAbsolutePath: { glob: "**/src/blog/*.md" }
-    //         frontmatter: {published: {eq: true}}
-    //       }
-    //       ) {
-    //         edges {
-    //           node {
-    //             frontmatter {
-    //               path
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //     `;
+  return new Promise((resolve, reject) => {
+    graphql(query).then(result => {
+      if (result.errors) {
+        reject(result.errors)
+      }
+      result.data.blogs.edges.forEach(({ node }) => {
+        createPage({
+          path: node.frontmatter.path,
+          component: path.resolve('src/templates/blog-post.js')
+        })
 
-    //   }
-
-
-      return new Promise((resolve, reject) => {
-        graphql(query).then(result => {
-          if (result.errors) {
-            reject(result.errors)
-          }
-          result.data.blogs.edges.forEach(({ node}) => {
-            createPage({
-              path: node.frontmatter.path,
-              component: path.resolve('src/templates/blog-post.js')
-            })
+        console.log(node.frontmatter.redirect_from)
+        node.frontmatter.redirect_from.forEach((redirect) => {
+          console.log(redirect)
+          createRedirect({
+            fromPath: redirect,
+            toPath: node.frontmatter.path,
+            redirectInBrowser: true
           })
-          result.data.pages.edges.forEach(({ node}) => {
-            createPage({
-              path: node.frontmatter.path,
-              component: path.resolve('src/templates/page.js')
-            })
-          })
-          resolve()
         })
       })
-    }
+      result.data.pages.edges.forEach(({ node }) => {
+        createPage({
+          path: node.frontmatter.path,
+          component: path.resolve('src/templates/page.js')
+        })
+
+        console.log(node.frontmatter.redirect_from)
+        node.frontmatter.redirect_from.forEach((redirect) => {
+          console.log(redirect)
+          createRedirect({
+            fromPath: redirect,
+            toPath: node.frontmatter.path,
+            redirectInBrowser: true
+          })
+        })
+      })
+      resolve()
+    })
+  })
+}
