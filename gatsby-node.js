@@ -26,29 +26,42 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-    }
-    `;
-
-    if (process.env.NODE_ENV === 'production') {
-      var query = `{
-        blogs: allMarkdownRemark(
-          filter: {
-            fileAbsolutePath: { glob: "**/src/blog/*.md" }
-            frontmatter: {published: {eq: true}}
-          }
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  path
-                }
-              }
+    pages: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { glob: "**/src/pages/*.md" }
+      }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
             }
           }
         }
-        `;
-
       }
+    }
+    `;
+
+    // if (process.env.NODE_ENV === 'production') {
+    //   var query = `{
+    //     blogs: allMarkdownRemark(
+    //       filter: {
+    //         fileAbsolutePath: { glob: "**/src/blog/*.md" }
+    //         frontmatter: {published: {eq: true}}
+    //       }
+    //       ) {
+    //         edges {
+    //           node {
+    //             frontmatter {
+    //               path
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //     `;
+
+    //   }
 
 
       return new Promise((resolve, reject) => {
@@ -60,6 +73,12 @@ exports.createPages = ({ graphql, actions }) => {
             createPage({
               path: node.frontmatter.path,
               component: path.resolve('src/templates/blog-post.js')
+            })
+          })
+          result.data.pages.edges.forEach(({ node}) => {
+            createPage({
+              path: node.frontmatter.path,
+              component: path.resolve('src/templates/page.js')
             })
           })
           resolve()

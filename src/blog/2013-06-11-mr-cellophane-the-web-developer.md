@@ -4,7 +4,7 @@ subtitle: Ladies and gentleman, you are about to read a story of web development
 path: /blog/mr-cellophane-the-web-developer
 date: 2013-06-11
 background_image: deskandcomputer_low_large.jpg
-redirect:
+redirects:
   - index.php/2013/06/mr-cellophane-the-web-developer/
 published: true
 ---

@@ -1,0 +1,58 @@
+version: 2
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.0
+
+defaults: &defaults
+  working_directory: /tmp/mikeyp.net
+  docker:
+    - image: circleci/node:11-browsers
+  environment:
+    - NODE_ENV: "production"
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - npm-cache-v1-{{ arch }}-{{ .Branch }}
+            - npm-cache-v1
+      - run: yarn install
+      - save_cache:
+          key: npm-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run: yarn build
+      - persist_to_workspace:
+          root: /tmp/mikeyp.net
+          paths:
+            - ./
+
+  deploy-production:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/mikeyp.net
+      - aws-s3/sync:
+          from: public
+          to: ''
+          arguments: |
+            --acl public-read
+          overwrite: true
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build
+      - deploy-production:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

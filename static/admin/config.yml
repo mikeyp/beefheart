@@ -19,10 +19,32 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "posts"
     label: "Blog posts"
-    folder: "src/pages/blog"
+    folder: "src/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: false
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Subtitle"
+        name: "subtitle"
+        widget: "string"
+        required: false
+      - label: "Path"
+        name: "path"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Redirects"
+        name: "redirects"
+        widget: "list"
+        required: false
+        field: {label: "URL", name: "url", widget: "string"}
+      - label: "Body"
+        name: "body"
+        widget: "markdown"

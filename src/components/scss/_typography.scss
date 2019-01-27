@@ -25,3 +25,10 @@
   src: url(./fonts/Raleway-Medium.woff) format('woff'),
        url(./fonts/Raleway-Medium.ttf)  format('truetype');
 }
+
+@font-face {
+  font-family: 'allerta-stencil';
+  src : url(./fonts/AllertaStencil-Regular.ttf) format('ttf'),
+        url(./fonts/AllertaStencil-Regular.woff) format('woff'),
+        url(./fonts/AllertaStencil-Regular.woff2) format('woff2');
+}
