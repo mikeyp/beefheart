@@ -20,7 +20,7 @@ collections:
         name: "redirect_from"
         widget: "list"
         required: false
-        field: {label: "URL", name: "url", widget: "string"}
+        field: {label: "URL", name: "url", widget: "string", hint: "Must begin and end with a forward slash. i.e. \"/old-path/\""}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "posts"
     label: "Blog posts"
@@ -38,6 +38,7 @@ collections:
       - label: "Path"
         name: "path"
         widget: "string"
+        default: "/blog/"
       - label: "Publish Date"
         name: "date"
         widget: "datetime"
@@ -45,7 +46,15 @@ collections:
         name: "redirect_from"
         widget: "list"
         required: false
-        field: {label: "URL", name: "url", widget: "string"}
+        field: {label: "URL", name: "url", widget: "string", hint: "Must begin and end with a forward slash. i.e. \"/old-path/\""}
+      - label: "Background Image"
+        name: "background_image"
+        widget: "image"
+        allow_multiple: false
+        required: false
+        media_library:
+          config:
+            multiple: false
       - label: "Body"
         name: "body"
         widget: "markdown"
