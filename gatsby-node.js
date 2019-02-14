@@ -55,9 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('src/templates/blog-post.js')
         })
 
-        console.log(node.frontmatter.redirect_from)
         node.frontmatter.redirect_from.forEach((redirect) => {
-          console.log(redirect)
           createRedirect({
             fromPath: redirect,
             toPath: node.frontmatter.path,
@@ -71,9 +69,7 @@ exports.createPages = ({ graphql, actions }) => {
           component: path.resolve('src/templates/page.js')
         })
 
-        console.log(node.frontmatter.redirect_from)
         node.frontmatter.redirect_from.forEach((redirect) => {
-          console.log(redirect)
           createRedirect({
             fromPath: redirect,
             toPath: node.frontmatter.path,
